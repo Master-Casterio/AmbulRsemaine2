@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
  
-@Entity
+
 public class ConfirmPassword extends Patient{
 
 	

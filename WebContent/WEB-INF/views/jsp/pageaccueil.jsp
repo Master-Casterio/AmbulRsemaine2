@@ -16,7 +16,7 @@
 		<div class="sscont">
 			<img src="projetub.gif">
 		</div>
-		<form:form method="post" id="connexion" action="urgenceindex"
+		<form:form method="post" id="connexion" action="accueilurgenceindex"
 			modelAttribute="user">
 			<p>Connection</p>
 			<table>

@@ -29,7 +29,7 @@ public class generatorcontroller extends HttpServlet {
       super.init(config);
       SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
     }
-      //methode init appelée à l'instanciation
+      //methode init appelï¿½e ï¿½ l'instanciation
       //on lui dit de injecter dans l'objet courant .this tous les Autowired
      
 	
@@ -47,6 +47,7 @@ public class generatorcontroller extends HttpServlet {
 	
 		/* CREATION D'UN PATIENT TEST */
 		Patient testpatient = new Patient();
+		testpatient.setConnexion_id(0);;
 		testpatient.setNom("Pioline");
 		testpatient.setPrenom("Cedric");
 		testpatient.setAge("47");
@@ -58,8 +59,11 @@ public class generatorcontroller extends HttpServlet {
 		testpatient.setTelU("0987654321");
 		testpatient.setDMP("9698798734");
 		testpatient.setNumSecu("453219728");
-		testpatient.setIdentifiant("");
+		testpatient.setIdentifiant("bouh");
 		testpatient.setPassword("sport");
+		testpatient.setAdresse_mail("emeline.mennereau@wanadoo.fr");
+		testpatient.setFormule("Abonnement 1 mois");
+		
 		System.out.println(testpatient); 
 		
 		testpatient = (Patient)this.patientDAO.save(testpatient); 

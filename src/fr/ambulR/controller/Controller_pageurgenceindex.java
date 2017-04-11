@@ -1,6 +1,10 @@
 package fr.ambulR.controller;
 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.xml.ws.spi.http.HttpContext;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +18,41 @@ import fr.ambulR.model.Connexion;
 @Controller
 public class Controller_pageurgenceindex {
 
-	@RequestMapping(value = "/urgenceindex", method = RequestMethod.POST)
-	public String subscribe(@Valid @ModelAttribute("user") Connexion connexion, BindingResult result, Model model) {
-	if (result.hasErrors()) {
-	System.out.println("L'utilisateur n'a pas été validé ...");
-	return "page_accueil";
+
+	@RequestMapping(value = "/accueilurgenceindex")
+	public String home2(@Valid @ModelAttribute("user") Connexion connexion, BindingResult result, Model model,
+			HttpSession session) {
+		if (!result.hasErrors()) {
+	
+			System.out.println("connexion :" + connexion);
+			System.out.println("session :" + session);
+	
+				session.setAttribute("connexion", connexion);
+				session.setAttribute("username", connexion.getIdentifiant());
+				return "page-urgenceindex";
+		
+		}
+
+		return "page_accueil";
 	}
-	System.out.println("Identifiant : " + connexion.getIdentifiant() + " password : " + connexion.getPassword());
-	return "page-urgenceindex";
+
+
+	
+	
+	@RequestMapping(value = "/urgenceindex")
+	public String home(@Valid @ModelAttribute("user") Connexion connexion, BindingResult result, Model model,
+			 HttpServletRequest req) {
+	
+			System.out.println("connexion :" + connexion);
+			
+			
+			if (req.getSession().getAttribute("username") != null) {
+				
+				return "page-urgenceindex";
+			}
+
+
+		return "redirect:/accueil";
 	}
-	}
+
+}

@@ -24,6 +24,12 @@ public class Connexion
 @GeneratedValue(strategy=GenerationType.AUTO)
 private int connexion_id;
 	
+public int getConnexion_id() {
+	return connexion_id;
+}
+public void setConnexion_id(int connexion_id) {
+	this.connexion_id = connexion_id;
+}
 @Column (name="connexion_identifiant")
 @NotEmpty(message="Identifiant obligatoire")
 private  String identifiant;
